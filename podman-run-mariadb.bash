@@ -2,6 +2,7 @@
 
 # Check if MariaDB container is already running
 if ! podman ps | grep -q mariadb; then
+    echo "Starting MariaDB container..."
     # Starte MariaDB Container
     podman run --detach \
         --name mariadb \
@@ -12,4 +13,7 @@ if ! podman ps | grep -q mariadb; then
         --publish 3306:3306 \
         -v mariadb_data:/var/lib/mysql \
         docker.io/library/mariadb:latest
+    echo "MariaDB container started successfully"
+else
+    echo "MariaDB container is already running"
 fi
