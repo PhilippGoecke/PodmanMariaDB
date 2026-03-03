@@ -11,7 +11,7 @@ if ! podman ps | grep -q mariadb; then
         --env MARIADB_PASSWORD=my_cool_secret \
         --env MARIADB_DATABASE=exmple-database \
         --publish 3306:3306 \
-        -v mariadb_data:/var/lib/mysql \
+        --volume mariadb_data:/var/lib/mysql \
         docker.io/library/mariadb:latest
     echo "MariaDB container started successfully"
 else
