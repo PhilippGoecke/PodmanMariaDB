@@ -8,6 +8,7 @@ BACKUP_FILE="$BACKUP_DIR/backup_$TIMESTAMP.sql"
 mkdir -p "$BACKUP_DIR"
 
 podman exec mariadb mysqldump -uroot -pyour_password --all-databases > "$BACKUP_FILE"
+# docker run --volume /backup-volume:/backup --rm mariadb:10.6.15 mariadb-backup --help
 
 if [ $? -eq 0 ]; then
     echo "Backup completed: $BACKUP_FILE"
