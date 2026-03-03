@@ -21,7 +21,8 @@ fi
 # Check if MariaDB is ready to accept connections
 echo "Waiting for MariaDB to be ready..."
 until podman exec mariadb mariadb -uroot -pyour_password -e "SELECT 1" &>/dev/null; do
-    echo "MariaDB is unavailable, retrying..."
-    sleep 2
+  # podman run -it --rm docker.io/library/mariadb:latest mariadb -h<remote_host> -uroot -pyour_password -e "SELECT 1"
+  echo "MariaDB is unavailable, retrying..."
+  sleep 2
 done
 echo "MariaDB is ready"
