@@ -22,4 +22,5 @@ else
     echo "Database already exists"
 fi
 
-podman run -it --rm docker.io/library/mariadb:latest mariadb -h localhost -p 3306 -u"$USERNAME" -p"$USER_PASSWORD" -e "SHOW FULL TABLES FROM $DBNAME;"
+podman exec mariadb mariadb -u"$USERNAME" -p"$USER_PASSWORD" -e "SHOW FULL TABLES FROM $DBNAME;"
+# podman run -it --rm docker.io/library/mariadb:latest mariadb -h localhost -p 3306 -u"$USERNAME" -p"$USER_PASSWORD" -e "SHOW FULL TABLES FROM $DBNAME;"
