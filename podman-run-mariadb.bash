@@ -14,6 +14,10 @@ if ! podman ps | grep -q mariadb; then
         --volume mariadb_data:/var/lib/mysql \
         docker.io/library/mariadb:latest
     echo "MariaDB container started successfully"
+elif podman ps | grep -q mariadb; then
+    echo "Starting existing MariaDB container..."
+    podman start mariadb
+    echo "MariaDB container started successfully"
 else
     echo "MariaDB container is already running"
 fi
