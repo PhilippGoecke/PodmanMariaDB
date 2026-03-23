@@ -6,6 +6,7 @@ if ! podman ps | grep -q mariadb; then
     # Starte MariaDB Container
     podman run --detach \
         --name mariadb \
+        --replace \
         --env MARIADB_ROOT_PASSWORD=your_password \
         --env MARIADB_USER=example-user \
         --env MARIADB_PASSWORD=my_cool_secret \
